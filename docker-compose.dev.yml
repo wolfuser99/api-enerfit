@@ -1,0 +1,58 @@
+version: '3'
+services:
+
+  # api-nest:
+  #   build: .
+  #   restart: always
+  #   command: sh -c "yarn start:dev"
+  #   environment:
+  #     - NODE_ENV=development
+  #     - TZ=America/Santiago
+  #     - DB_USERNAME=postgres
+  #     - DB_PASSWORD=password
+  #     - DB_NAME=postgres
+  #     - DB_HOST=postgres-db
+  #     - DB_PORT=5432
+  #     - JWT_SECRET=bA2xcjpf8y5aSUFsNB2qN5yymUBSs6es3qHoFpGkec75RCeBb8cpKauGefw5qy4
+  #     - JWT_EXPIRATION_MINUTES=9999
+  #   volumes:
+  #     - .:/app
+  #     - ./node_modules:/app/node_modules
+  #   depends_on:
+  #     - postgres-db
+  #     - install
+  #   ports:
+  #     - "3000:3000"
+
+  postgres-db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      TZ: 'America/Santiago'
+    ports:
+      - '5432:5432'
+
+  # install:
+  #   build: .
+  #   command: sh -c "yarn && yarn seeds"
+  #   environment:
+  #     - NODE_ENV=development
+  #     - TZ=America/Santiago
+  #     - DB_USERNAME=postgres
+  #     - DB_PASSWORD=password
+  #     - DB_NAME=postgres
+  #     - DB_HOST=postgres-db
+  #     - DB_PORT=5432
+  #   volumes:
+  #     - ./node_modules:/app/node_modules
+
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #    - ADMINER_DEFAULT_SERVER=postgres-db
+  #   depends_on:
+  #     - postgres-db

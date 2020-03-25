@@ -1,0 +1,11 @@
+const path = require('path');
+require('dotenv').config()
+
+module.exports = {
+  'env': 'default', // forces default environment variables for CLI
+  'debug': true,
+  'config': path.resolve('db', 'config.js'),
+  'models-path': path.resolve('db', 'models'),
+  'seeders-path': path.resolve('db', 'seeders'),
+  'migrations-path': path.resolve('db', 'migrations')
+}
