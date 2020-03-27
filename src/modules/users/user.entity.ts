@@ -8,7 +8,6 @@ import {
   BeforeCreate,
   DataType,
   Default,
-  DefaultScope,
 } from 'sequelize-typescript';
 import * as bcrypt from 'bcryptjs';
 
@@ -17,12 +16,7 @@ export enum UserRole {
   USER = 'USER',
 }
 
-@DefaultScope(() => ({
-  attributes: { exclude: ['password'] },
-}))
-@Table({
-  /* tableName:'users' */
-})
+@Table
 export class User extends Model<User> {
   @Column({ primaryKey: true, unique: true })
   email: string;
@@ -39,7 +33,7 @@ export class User extends Model<User> {
   @Default(UserRole.USER)
   @Column({ type: DataType.ENUM('ADMIN', 'USER'), allowNull: false })
   role: UserRole;
-  
+
   @Default(true)
   @Column
   active: boolean;
@@ -57,6 +51,6 @@ export class User extends Model<User> {
   }
 
   async validatePassword(password: string) {
-    return bcrypt.compare(password, this.password);
+    return await bcrypt.compare(password, this.password);
   }
 }

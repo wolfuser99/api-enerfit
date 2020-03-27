@@ -8,6 +8,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './modules/users/user.entity';
 import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/shared/auth/auth.module';
 
 @Module({
   imports: [
@@ -23,7 +24,10 @@ import { UsersModule } from './modules/users/users.module';
 
         dialect: 'postgres',
         timezone: configService.get<string>('TZ') || 'America/Santiago',
-        sync: { force: configService.get<string>('NODE_ENV') !== 'production' },
+        sync: {
+          force:
+            configService.get<string>('NODE_ENV') !== 'production' && false, //this will drop the entire DB
+        },
 
         autoLoadModels: true,
         synchronize: true,
@@ -32,12 +36,14 @@ import { UsersModule } from './modules/users/users.module';
       inject: [ConfigService],
     }),
     GraphQLModule.forRootAsync({
-      useFactory: () => ({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
         autoSchemaFile: './src/schema.graphql',
         playground: true,
-        debug: true,
+        debug: configService.get<string>('NODE_ENV') !== 'production',
         context: ({ req }) => ({ req }),
       }),
+      inject: [ConfigService],
     }),
     TerminusModule.forRootAsync({
       useFactory: () => ({
@@ -50,6 +56,8 @@ import { UsersModule } from './modules/users/users.module';
       }),
     }),
     UsersModule,
+
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,7 +1,7 @@
 # compiled output
 /dist
 /node_modules
-/db/data
+src/schema.graphql
 
 # Logs
 logs

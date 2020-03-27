@@ -9,21 +9,21 @@ registerEnumType(UserRole, {
 @ObjectType()
 export class User {
   @Field()
-  readonly email: string;
+  email: string;
 
   @Field()
-  readonly name: string;
+  name: string;
 
-  @Field({ nullable: true })
-  readonly lastname: string;
+  @Field({ nullable: true, defaultValue: '' })
+  lastname?: string;
 
   @Field(type => UserRole)
   role: UserRole;
 
   @Field()
-  readonly createdAt: Date;
+  createdAt: Date;
   @Field()
-  readonly updatedAt: Date;
+  updatedAt: Date;
 
   constructor(user?: UserDB) {
     this.email = user?.email;

@@ -22,9 +22,11 @@ async function bootstrap() {
   fixSequelizeTimestampstzDates();
 
   const app = await NestFactory.create(AppModule);
+  
   const configService = app.get(ConfigService);
   const port = configService.get('PORT') || 3000;
 
+  app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
       // forbidUnknownValues: true,

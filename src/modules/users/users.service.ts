@@ -12,7 +12,9 @@ export class UsersService {
   ) {}
 
   async findAll(): Promise<User[]> {
-    return await this.userModel.findAll<User>();
+    return await this.userModel.findAll<User>({
+      attributes: { exclude: ['password'] },
+    });
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {

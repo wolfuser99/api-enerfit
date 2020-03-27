@@ -4,7 +4,7 @@ import { UsersService } from './users.service';
 import { User } from './dto/user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 
-@Resolver(/* User */)
+@Resolver(of => User)
 export class UserResolver {
   constructor(private userService: UsersService) {}
 
