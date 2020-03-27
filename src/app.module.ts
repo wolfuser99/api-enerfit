@@ -38,6 +38,7 @@ import { AuthModule } from './modules/shared/auth/auth.module';
     GraphQLModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
+        introspection: true,
         autoSchemaFile: './src/schema.graphql',
         playground: true,
         debug: configService.get<string>('NODE_ENV') !== 'production',
