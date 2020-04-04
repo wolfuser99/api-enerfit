@@ -1,12 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Module, Global } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 
 import { AuthService } from './auth.service';
-import { User } from 'src/modules/users/user.entity';
+import { User } from 'src/modules/user/user.entity';
 import { AuthResolver } from './auth.resolver';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GQLAuthGuard } from './guards/GQLAuth.guard';
 
+@Global()
 @Module({
   imports: [
     SequelizeModule.forFeature([User]),
@@ -21,6 +23,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthService, AuthResolver],
+  providers: [AuthService, AuthResolver, GQLAuthGuard],
+  exports: [GQLAuthGuard, AuthService],
 })
 export class AuthModule {}

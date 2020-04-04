@@ -8,8 +8,10 @@ import {
   BeforeCreate,
   DataType,
   Default,
+  HasMany,
 } from 'sequelize-typescript';
 import * as bcrypt from 'bcryptjs';
+import { PurchaseOrder } from '../purchaseOrder/purchaseOrder.entity';
 
 export enum UserRole {
   ADMIN = 'ADMIN',
@@ -18,7 +20,10 @@ export enum UserRole {
 
 @Table
 export class User extends Model<User> {
-  @Column({ primaryKey: true, unique: true })
+  @Column({ primaryKey: true, autoIncrement: true })
+  id: number;
+
+  @Column({ unique: true })
   email: string;
 
   @Column({ allowNull: false })
@@ -43,6 +48,9 @@ export class User extends Model<User> {
 
   @UpdatedAt
   updatedAt: Date;
+
+  @HasMany(() => PurchaseOrder)
+  purchaseOrders: PurchaseOrder[];
 
   @BeforeUpdate
   @BeforeCreate

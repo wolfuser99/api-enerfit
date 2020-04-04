@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
-import { User } from 'src/modules/users/user.entity';
+import { User } from 'src/modules/user/user.entity';
 import { Auth } from './dto/auth.dto';
 import { LoginInput } from './dto/login-input.dto';
 import { JwtService } from '@nestjs/jwt';
@@ -16,7 +16,10 @@ export class AuthService {
 
   async login(loginInput: LoginInput) {
     Logger.log(`Loggin request by: ${loginInput.email}`, this.constructor.name);
-    const user = await this.userModel.findByPk(loginInput.email);
+    const user = await this.userModel.findOne({
+      where: { email: loginInput.email },
+    });
+
     if (!user || !(await user.validatePassword(loginInput.password))) {
       Logger.log('Invalid email/password', this.constructor.name);
       throw new Error('Invalid email/password');
@@ -29,5 +32,14 @@ export class AuthService {
       role: user.role,
     });
     return auth;
+  }
+
+  async isTokenAndRoleValid(token: string, permittedRoles: string[]) {
+    await this.jwtService.verifyAsync(token);
+    const decoded = this.jwtService.decode(token);
+    if (decoded['role'] !== null && permittedRoles.includes(decoded['role'])) {
+      return true;
+    }
+    return false;
   }
 }

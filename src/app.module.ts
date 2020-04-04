@@ -6,9 +6,10 @@ import { TerminusModule } from '@nestjs/terminus';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { User } from './modules/users/user.entity';
-import { UsersModule } from './modules/users/users.module';
+import { UsersModule } from './modules/user/users.module';
 import { AuthModule } from './modules/shared/auth/auth.module';
+
+import { modelEntities } from './modules';
 
 @Module({
   imports: [
@@ -26,12 +27,13 @@ import { AuthModule } from './modules/shared/auth/auth.module';
         timezone: configService.get<string>('TZ') || 'America/Santiago',
         sync: {
           force:
-            configService.get<string>('NODE_ENV') !== 'production' && false, //this will drop the entire DB
+            //this will drop the entire DB
+            configService.get<string>('NODE_ENV') !== 'production' && true,
         },
 
         autoLoadModels: true,
         synchronize: true,
-        models: [User],
+        models: [...modelEntities],
       }),
       inject: [ConfigService],
     }),
