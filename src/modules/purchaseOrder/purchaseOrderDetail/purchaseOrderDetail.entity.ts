@@ -13,6 +13,9 @@ export class PurchaseOrderDetail extends Model<PurchaseOrderDetail> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
 
+  @Column
+  quantity: number;
+
   @ForeignKey(() => PurchaseOrder)
   @Column
   purchaseOrderId: number;

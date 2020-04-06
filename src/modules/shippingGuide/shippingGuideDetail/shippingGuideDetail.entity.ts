@@ -5,13 +5,16 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import { Product } from 'src/modules/product/product.entity';
 import { ShippingGuide } from '../shippingGuide.entity';
+import { ShoppingGuideDetail } from 'src/modules/shoppingGuide/shoppingGuideDetail/shoppingGuideDetail.entity';
 
 @Table
 export class ShippingGuideDetail extends Model<ShippingGuideDetail> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
+
+  @Column
+  quantity: number;
 
   @ForeignKey(() => ShippingGuide)
   @Column
@@ -19,9 +22,9 @@ export class ShippingGuideDetail extends Model<ShippingGuideDetail> {
   @BelongsTo(() => ShippingGuide)
   shippingGuide: ShippingGuide;
 
-  @ForeignKey(() => Product)
+  @ForeignKey(() => ShoppingGuideDetail)
   @Column
-  productId: number;
-  @BelongsTo(() => Product)
-  product: Product;
+  shoppingGuideDetailId: number;
+  @BelongsTo(() => ShoppingGuideDetail)
+  shoppingGuideDetail: ShoppingGuideDetail;
 }

@@ -26,6 +26,7 @@ export class AuthService {
     }
 
     const auth = new Auth();
+    auth.user = user;
     auth.tokenType = 'Bearer';
     auth.token = await this.jwtService.signAsync({
       sub: user.id,

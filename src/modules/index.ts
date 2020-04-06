@@ -8,12 +8,16 @@ import { ShippingGuideDetail } from './shippingGuide/shippingGuideDetail/shippin
 import { ShoppingGuide } from './shoppingGuide/shoppingGuide.entity';
 import { ShoppingGuideDetail } from './shoppingGuide/shoppingGuideDetail/shoppingGuideDetail.entity';
 import { User } from './user/user.entity';
+import { Category } from './product/category/category.entity';
+import { ProviderProduct } from './provider/providerProduct/providerProduct.entity';
 
 export const modelEntities = [
   PurchaseOrder,
+  Category,
   Customer,
   Product,
   Provider,
+  ProviderProduct,
   PurchaseOrderDetail,
   ShippingGuide,
   ShippingGuideDetail,

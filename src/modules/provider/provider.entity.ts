@@ -6,6 +6,9 @@ export class Provider extends Model<Provider> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
 
+  @Column
+  name: string;
+
   @HasMany(() => ShoppingGuide)
   shoppingGuides: ShoppingGuide[];
 }

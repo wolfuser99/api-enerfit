@@ -9,6 +9,9 @@ registerEnumType(UserRole, {
 @ObjectType()
 export class User {
   @Field()
+  id: number;
+
+  @Field()
   email: string;
 
   @Field()

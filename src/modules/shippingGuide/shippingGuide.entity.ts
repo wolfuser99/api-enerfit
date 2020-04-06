@@ -9,6 +9,7 @@ import {
 
 import { ShippingGuideDetail } from './shippingGuideDetail/shippingGuideDetail.entity';
 import { Customer } from '../customer/customer.entity';
+import { PurchaseOrder } from '../purchaseOrder/purchaseOrder.entity';
 
 @Table
 export class ShippingGuide extends Model<ShippingGuide> {
@@ -18,9 +19,9 @@ export class ShippingGuide extends Model<ShippingGuide> {
   @HasMany(() => ShippingGuideDetail)
   shippingGuideDetails: ShippingGuideDetail[];
 
-  @ForeignKey(() => Customer)
+  @ForeignKey(() => PurchaseOrder)
   @Column
-  customerId: number;
-  @BelongsTo(() => Customer)
-  customer: Customer;
+  purchaseOrderId: number;
+  @BelongsTo(() => PurchaseOrder)
+  purchaseOrder: PurchaseOrder;
 }
