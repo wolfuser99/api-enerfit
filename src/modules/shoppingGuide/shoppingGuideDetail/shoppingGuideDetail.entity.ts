@@ -4,11 +4,9 @@ import {
   Column,
   ForeignKey,
   BelongsTo,
-  HasOne,
 } from 'sequelize-typescript';
 import { ShoppingGuide } from '../shoppingGuide.entity';
 import { ProviderProduct } from 'src/modules/provider/providerProduct/providerProduct.entity';
-import { ShippingGuideDetail } from 'src/modules/shippingGuide/shippingGuideDetail/shippingGuideDetail.entity';
 
 @Table
 export class ShoppingGuideDetail extends Model<ShoppingGuideDetail> {
@@ -24,6 +22,9 @@ export class ShoppingGuideDetail extends Model<ShoppingGuideDetail> {
   @Column
   wasBought: boolean;
 
+  @Column
+  deliveryState: string;
+
   @ForeignKey(() => ShoppingGuide)
   @Column
   shoppingGuideId: number;
@@ -35,7 +36,4 @@ export class ShoppingGuideDetail extends Model<ShoppingGuideDetail> {
   providerProductId: number;
   @BelongsTo(() => ProviderProduct)
   providerProduct: ProviderProduct;
-
-  @HasOne(() => ShippingGuideDetail)
-  shippingGuideDetail: ShippingGuideDetail[];
 }

@@ -15,6 +15,9 @@ export class ShoppingGuide extends Model<ShoppingGuide> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
 
+  @Column
+  invoiceFile: string;
+
   @HasMany(() => ShoppingGuideDetail)
   shoppingGuideDetails: ShoppingGuideDetail[];
 

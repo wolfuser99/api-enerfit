@@ -16,6 +16,9 @@ export class PurchaseOrderDetail extends Model<PurchaseOrderDetail> {
   @Column
   quantity: number;
 
+  @Column
+  isInShoppingGuide: boolean;
+
   @ForeignKey(() => PurchaseOrder)
   @Column
   purchaseOrderId: number;

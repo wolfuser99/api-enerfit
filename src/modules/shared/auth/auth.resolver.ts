@@ -1,5 +1,4 @@
 import { Resolver, Args, Query } from '@nestjs/graphql';
-import { Logger } from '@nestjs/common';
 import { AuthenticationError } from 'apollo-server-express';
 
 import { AuthService } from './auth.service';

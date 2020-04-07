@@ -43,6 +43,9 @@ export class User extends Model<User> {
   @Column
   active: boolean;
 
+  @Column
+  imageFile: string;
+
   @CreatedAt
   createdAt: Date;
 

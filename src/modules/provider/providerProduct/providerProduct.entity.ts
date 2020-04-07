@@ -5,10 +5,12 @@ import {
   ForeignKey,
   BelongsTo,
   HasMany,
+  Default,
 } from 'sequelize-typescript';
 import { Product } from 'src/modules/product/product.entity';
 import { Provider } from '../provider.entity';
 import { ShoppingGuideDetail } from 'src/modules/shoppingGuide/shoppingGuideDetail/shoppingGuideDetail.entity';
+import { ShippingGuideDetail } from 'src/modules/shippingGuide/shippingGuideDetail/shippingGuideDetail.entity';
 
 @Table
 export class ProviderProduct extends Model<ProviderProduct> {
@@ -20,6 +22,10 @@ export class ProviderProduct extends Model<ProviderProduct> {
 
   @Column
   salePrice: number;
+
+  @Default(0)
+  @Column
+  stock: number;
 
   @ForeignKey(() => Product)
   @Column
@@ -35,4 +41,7 @@ export class ProviderProduct extends Model<ProviderProduct> {
 
   @HasMany(() => ShoppingGuideDetail)
   shoppingGuideDetails: ShoppingGuideDetail[];
+
+  @HasMany(() => ShippingGuideDetail)
+  shippingGuideDetails: ShippingGuideDetail[];
 }

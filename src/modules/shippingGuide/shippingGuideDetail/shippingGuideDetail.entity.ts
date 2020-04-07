@@ -6,7 +6,7 @@ import {
   BelongsTo,
 } from 'sequelize-typescript';
 import { ShippingGuide } from '../shippingGuide.entity';
-import { ShoppingGuideDetail } from 'src/modules/shoppingGuide/shoppingGuideDetail/shoppingGuideDetail.entity';
+import { ProviderProduct } from 'src/modules/provider/providerProduct/providerProduct.entity';
 
 @Table
 export class ShippingGuideDetail extends Model<ShippingGuideDetail> {
@@ -22,9 +22,9 @@ export class ShippingGuideDetail extends Model<ShippingGuideDetail> {
   @BelongsTo(() => ShippingGuide)
   shippingGuide: ShippingGuide;
 
-  @ForeignKey(() => ShoppingGuideDetail)
+  @ForeignKey(() => ProviderProduct)
   @Column
-  shoppingGuideDetailId: number;
-  @BelongsTo(() => ShoppingGuideDetail)
-  shoppingGuideDetail: ShoppingGuideDetail;
+  providerProductId: number;
+  @BelongsTo(() => ProviderProduct)
+  providerProduct: ProviderProduct;
 }

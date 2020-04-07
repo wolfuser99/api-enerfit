@@ -73,6 +73,9 @@ export class PurchaseOrder extends Model<PurchaseOrder> {
   @Column
   state: string;
 
+  @Column
+  invoiceFile: string;
+
   @ForeignKey(() => User)
   @Column
   createdByUserId: number;

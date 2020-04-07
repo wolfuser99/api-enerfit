@@ -5,11 +5,10 @@ import {
   HasMany,
   ForeignKey,
   BelongsTo,
+  Default,
 } from 'sequelize-typescript';
 
 import { PurchaseOrderDetail } from '../purchaseOrder/purchaseOrderDetail/purchaseOrderDetail.entity';
-import { ShoppingGuideDetail } from '../shoppingGuide/shoppingGuideDetail/shoppingGuideDetail.entity';
-import { ShippingGuideDetail } from '../shippingGuide/shippingGuideDetail/shippingGuideDetail.entity';
 import { Category } from './category/category.entity';
 import { ProviderProduct } from '../provider/providerProduct/providerProduct.entity';
 
@@ -17,6 +16,10 @@ import { ProviderProduct } from '../provider/providerProduct/providerProduct.ent
 export class Product extends Model<Product> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
+
+  @Default(true)
+  @Column
+  active: boolean;
 
   @Column
   name: string;
