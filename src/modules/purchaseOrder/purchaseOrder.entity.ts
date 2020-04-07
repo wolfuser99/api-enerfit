@@ -6,6 +6,7 @@ import {
   BelongsTo,
   HasMany,
 } from 'sequelize-typescript';
+
 import { User } from '../user/user.entity';
 import { PurchaseOrderDetail } from './purchaseOrderDetail/purchaseOrderDetail.entity';
 import { Customer } from '../customer/customer.entity';

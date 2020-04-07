@@ -8,7 +8,6 @@ import {
 } from 'sequelize-typescript';
 
 import { ShippingGuideDetail } from './shippingGuideDetail/shippingGuideDetail.entity';
-import { Customer } from '../customer/customer.entity';
 import { PurchaseOrder } from '../purchaseOrder/purchaseOrder.entity';
 
 @Table

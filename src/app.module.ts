@@ -28,7 +28,7 @@ import { modelEntities } from './modules';
         sync: {
           force:
             //this will drop the entire DB
-            configService.get<string>('NODE_ENV') !== 'production' && true,
+            configService.get<string>('NODE_ENV') !== 'production' && false,
         },
 
         autoLoadModels: true,

@@ -7,6 +7,7 @@ import {
   HasMany,
   Default,
 } from 'sequelize-typescript';
+
 import { Product } from 'src/modules/product/product.entity';
 import { Provider } from '../provider.entity';
 import { ShoppingGuideDetail } from 'src/modules/shoppingGuide/shoppingGuideDetail/shoppingGuideDetail.entity';

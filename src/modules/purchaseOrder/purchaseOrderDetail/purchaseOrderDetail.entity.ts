@@ -5,6 +5,7 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
+
 import { PurchaseOrder } from '../purchaseOrder.entity';
 import { Product } from 'src/modules/product/product.entity';
 
