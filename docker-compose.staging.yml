@@ -1,0 +1,42 @@
+version: '3'
+services:
+  api-nest:
+    build: .
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - TZ=America/Santiago
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - JWT_SECRET=bA2xcjpf8y5aSUFsNB2qN5yymUBSs6es3qHoFpGkec75RCeBb8cpKauGefw5qy4
+      - JWT_EXPIRATION=7d
+    # volumes:
+    # - /app/node_modules # seems to be not necessary, it uses cache
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      TZ: 'America/Santiago'
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    # ports:
+    #   - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+    depends_on:
+      - db
