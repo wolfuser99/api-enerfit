@@ -35,7 +35,7 @@
     "apollo-server-express": "2.11.0",
     "bcryptjs": "2.4.3",
     "class-transformer": "0.2.3",
-    "class-validator": "0.12.0-rc.0",
+    "class-validator": "0.12.0-refactor.5",
     "faker": "4.1.0",
     "graphql": "14.6.0",
     "graphql-tools": "4.0.7",
