@@ -32,7 +32,7 @@
     "@nestjs/platform-express": "7.0.7",
     "@nestjs/sequelize": "0.1.0",
     "@nestjs/terminus": "7.0.0-pre.4",
-    "apollo-server-express": "2.11.0",
+    "apollo-server-express": "2.12.0",
     "bcryptjs": "2.4.3",
     "class-transformer": "0.2.3",
     "class-validator": "0.12.0-rc.0",
