@@ -1,32 +1,34 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import { UseGuards } from '@nestjs/common';
 
 import { UsersService } from './users.service';
 import { User } from './dto/user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { Roles } from '../shared/auth/roles.decorator';
 import { GQLAuthGuard } from '../shared/auth/guards/GQLAuth.guard';
-import { UseGuards } from '@nestjs/common';
+import { dbErrorGQL } from '../shared/util';
 
 @Resolver(of => User)
-export class UserResolver {
+export class UsersResolver {
   constructor(private userService: UsersService) {}
-
-  @Query(returns => String, { nullable: true })
-  hello(@Args('name') name: string): string {
-    const time =
-      new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
-    return `Hello ${name}! ` + time;
-  }
 
   @Roles(['ADMIN'])
   @UseGuards(GQLAuthGuard)
   @Query(returns => [User], { nullable: true })
   async users(): Promise<User[]> {
-    return await this.userService.findAll();
+    try {
+      return await this.userService.findAll();
+    } catch (error) {
+      dbErrorGQL(error, this.constructor.name);
+    }
   }
 
   @Mutation(returns => User, { nullable: true })
   async createUser(@Args('data') data: CreateUserDto) {
-    return await this.userService.create(data);
+    try {
+      return await this.userService.create(data);
+    } catch (error) {
+      dbErrorGQL(error, this.constructor.name);
+    }
   }
 }

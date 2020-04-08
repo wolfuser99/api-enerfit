@@ -10,6 +10,7 @@ import { ShoppingGuideDetail } from './shoppingGuide/shoppingGuideDetail/shoppin
 import { User } from './user/user.entity';
 import { Category } from './product/category/category.entity';
 import { ProviderProduct } from './provider/providerProduct/providerProduct.entity';
+import { ProductsModule } from './product/products.module';
 
 export const modelEntities = [
   PurchaseOrder,
@@ -25,3 +26,5 @@ export const modelEntities = [
   ShoppingGuideDetail,
   User,
 ];
+
+export const modules = [ProductsModule];

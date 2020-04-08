@@ -9,8 +9,8 @@ import {
 } from 'sequelize-typescript';
 
 import { PurchaseOrderDetail } from '../purchaseOrder/purchaseOrderDetail/purchaseOrderDetail.entity';
-import { Category } from './category/category.entity';
 import { ProviderProduct } from '../provider/providerProduct/providerProduct.entity';
+import { Category } from './category/category.entity';
 
 @Table
 export class Product extends Model<Product> {

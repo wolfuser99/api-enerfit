@@ -9,6 +9,24 @@ export class Provider extends Model<Provider> {
   @Column
   name: string;
 
+  @Column
+  rut: string;
+
+  @Column
+  business: string;
+
+  @Column
+  phone: string;
+
+  @Column
+  address: string;
+
+  @Column
+  currentAccountNumber: string;
+
+  @Column
+  deliveryTransport: string;
+
   @HasMany(() => ShoppingGuide)
   shoppingGuides: ShoppingGuide[];
 }

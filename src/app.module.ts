@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './modules/user/users.module';
 import { AuthModule } from './modules/shared/auth/auth.module';
 
-import { modelEntities } from './modules';
+import { modelEntities, modules } from './modules';
 
 @Module({
   imports: [
@@ -28,7 +28,7 @@ import { modelEntities } from './modules';
         sync: {
           force:
             //this will drop the entire DB
-            configService.get<string>('NODE_ENV') !== 'production' && false,
+            configService.get<string>('NODE_ENV') !== 'production' && true,
         },
 
         autoLoadModels: true,
@@ -59,7 +59,7 @@ import { modelEntities } from './modules';
       }),
     }),
     UsersModule,
-
+    ...modules,
     AuthModule,
   ],
   controllers: [AppController],

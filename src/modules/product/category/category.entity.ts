@@ -6,7 +6,7 @@ export class Category extends Model<Category> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
 
-  @Column
+  @Column({ unique: true })
   name: string;
 
   @HasMany(() => Product)
