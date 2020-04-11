@@ -1,5 +1,5 @@
-import { IsString, IsEmail, IsNotEmpty, MinLength, IsBoolean } from 'class-validator';
-import { InputType,Field } from '@nestjs/graphql';
+import { IsString, IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+import { InputType, Field } from '@nestjs/graphql';
 
 import { UserRole } from '../user.entity';
 
@@ -13,13 +13,15 @@ export class CreateUserDto {
   @IsString()
   name: string;
 
-  @Field({nullable:true})
+  @Field({ nullable: true })
   lastname?: string;
+
+  // @Field({ nullable: true })
+  // imageFile?: string;
 
   @Field()
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
   password: string;
-
 }

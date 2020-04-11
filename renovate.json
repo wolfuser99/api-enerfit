@@ -1,16 +1,17 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "timezone": "America/Santiago",
   "schedule": "before 5am every weekday",
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": "after 10pm on sunday"
-  },
-  "packageRules": [{
-    "schedule": "before 5am every wednesday",
-    "updateTypes": ["minor", "patch", "pin", "digest"],
+    "schedule": "before 5am every weekday",
     "automerge": true
-  }]
+  },
+  "packageRules": [
+    {
+      "schedule": "before 5am every wednesday",
+      "updateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
 }

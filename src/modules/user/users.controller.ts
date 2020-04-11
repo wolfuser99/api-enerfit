@@ -7,10 +7,10 @@ import { User } from './dto/user.dto';
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
-    @Get()
-  async findAll():Promise<User[]> {
-    const users=await this.userService.findAll()
-    return users.map(user=>new User(user));
+  @Get()
+  async findAll(): Promise<User[]> {
+    const users = await this.userService.findAll();
+    return users;
   }
 
   @Post()
