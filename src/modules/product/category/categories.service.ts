@@ -10,9 +10,7 @@ export class CategoriesService {
   constructor(
     @InjectModel(Category)
     private readonly userModel: typeof Category,
-  ) {
-    this.update(1, null);
-  }
+  ) {}
 
   async findAll(): Promise<Category[]> {
     return await this.userModel.findAll<Category>({});
