@@ -9,19 +9,19 @@ import { UpdateCategoryDto } from './dto/update.dto';
 export class CategoriesService {
   constructor(
     @InjectModel(Category)
-    private readonly userModel: typeof Category,
+    private readonly model: typeof Category,
   ) {}
 
   async findAll(): Promise<Category[]> {
-    return await this.userModel.findAll<Category>({});
+    return await this.model.findAll<Category>({});
   }
 
   async create(dto: CreateCategoryDto): Promise<Category> {
-    return await this.userModel.create<Category>(dto);
+    return await this.model.create<Category>(dto);
   }
 
   async update(id: number, dto: UpdateCategoryDto): Promise<Category> {
-    const elem = await this.userModel.findByPk(id);
+    const elem = await this.model.findByPk(id);
     if (elem !== null) {
       return await elem.update(dto);
     }
@@ -29,7 +29,7 @@ export class CategoriesService {
   }
 
   async delete(id: number): Promise<number> {
-    const elem = await this.userModel.findByPk(id);
+    const elem = await this.model.findByPk(id);
     if (elem !== null) {
       await elem.destroy();
       return id;
