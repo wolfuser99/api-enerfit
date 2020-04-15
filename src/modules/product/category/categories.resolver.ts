@@ -1,5 +1,6 @@
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
-import { UseGuards } from '@nestjs/common';
+import { Resolver, Query, Args, Mutation, Int } from '@nestjs/graphql';
+import { UseGuards, Logger } from '@nestjs/common';
+import { ApolloError } from 'apollo-server-express';
 
 import { Category } from './dto/category.dto';
 import { CategoriesService } from './categories.service';
@@ -30,13 +31,40 @@ export class CategoriesResolver {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  @Roles(['ADMIN'])
+  @UseGuards(GQLAuthGuard)
   @Mutation(returns => Category, { nullable: true })
   async createCategory(@Args('data') data: CreateCategoryDto) {
     try {
       return await this.categoryService.create(data);
     } catch (error) {
       dbErrorGQL(error, this.constructor.name);
+    }
+  }
+
+  @Roles(['ADMIN', 'USER'])
+  @UseGuards(GQLAuthGuard)
+  @Mutation(returns => Category, { nullable: true })
+  async updateCategory(
+    @Args('data') data: CreateCategoryDto,
+    @Args('id') id: number,
+  ) {
+    try {
+      return await this.categoryService.update(id, data);
+    } catch (error) {
+      Logger.error(error);
+      throw new ApolloError(error);
+    }
+  }
+  @Roles(['ADMIN', 'USER'])
+  @UseGuards(GQLAuthGuard)
+  @Mutation(returns => Int, { nullable: true })
+  async deleteCategory(@Args('id', { type: () => Int }) id: number) {
+    try {
+      return await this.categoryService.delete(id);
+    } catch (error) {
+      Logger.error(error);
+      throw new ApolloError(error);
     }
   }
 }

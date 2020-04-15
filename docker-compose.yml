@@ -1,7 +1,6 @@
-version: "3"
+version: '3'
 services:
-
-  api-nest:
+  api:
     build: .
     restart: always
     environment:
@@ -15,11 +14,11 @@ services:
       - JWT_SECRET=bA2xcjpf8y5aSUFsNB2qN5yymUBSs6es3qHoFpGkec75RCeBb8cpKauGefw5qy4
       - JWT_EXPIRATION=7d
     # volumes:
-      # - /app/node_modules # seems to be not necessary, it uses cache
+    # - /app/node_modules # seems to be not necessary, it uses cache
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - '3000:3000'
 
   db:
     image: postgres:11-alpine
