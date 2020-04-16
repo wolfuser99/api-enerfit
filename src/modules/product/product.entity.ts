@@ -24,9 +24,6 @@ export class Product extends Model<Product> {
   @Column
   name: string;
 
-  @Column
-  providerId: string;
-
   @ForeignKey(() => Category)
   @Column
   categoryId: number;

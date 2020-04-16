@@ -12,10 +12,10 @@ export class Product {
   name: string;
 
   @Field()
-  providerId: string;
+  category: Category;
 
   @Field()
-  category: Category;
+  categoryId: number;
 
   // @HasMany(() => ProviderProduct)
   // providerProducts: ProviderProduct[];

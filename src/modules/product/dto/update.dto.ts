@@ -9,8 +9,5 @@ export class UpdateProductDto {
   name: string;
 
   @Field()
-  providerId: string;
-
-  @Field()
   categoryId: number;
 }

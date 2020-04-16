@@ -13,13 +13,6 @@ import { CreateCategoryDto } from './dto/create.dto';
 export class CategoriesResolver {
   constructor(private categoryService: CategoriesService) {}
 
-  @Query(returns => String, { nullable: true })
-  hello(@Args('name') name: string): string {
-    const time =
-      new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
-    return `Hello ${name}! ` + time;
-  }
-
   @Roles(['ADMIN'])
   @UseGuards(GQLAuthGuard)
   @Query(returns => [Category], { nullable: true })
