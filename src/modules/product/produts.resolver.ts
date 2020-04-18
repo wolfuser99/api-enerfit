@@ -9,6 +9,7 @@ import { GQLAuthGuard } from '../shared/auth/guards/GQLAuth.guard';
 import { dbErrorGQL } from '../shared/util';
 import { CreateProductDto } from './dto/create.dto';
 import { UpdateProductDto } from './dto/update.dto';
+import { BatchCreteProductsDto } from './dto/batchCreate.dto';
 
 @Resolver(of => Product)
 export class ProductsResolver {
@@ -38,6 +39,17 @@ export class ProductsResolver {
   async createProduct(@Args('data') data: CreateProductDto) {
     try {
       return await this.productService.create(data);
+    } catch (error) {
+      dbErrorGQL(error, this.constructor.name);
+    }
+  }
+
+  @Roles(['ADMIN', 'USER'])
+  @UseGuards(GQLAuthGuard)
+  @Mutation(returns => [Product], { nullable: true })
+  async createProducts(@Args('data') data: BatchCreteProductsDto) {
+    try {
+      return await this.productService.createBatch(data);
     } catch (error) {
       dbErrorGQL(error, this.constructor.name);
     }

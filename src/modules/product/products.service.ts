@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+
 import { Product } from './product.entity';
 import { CreateProductDto } from './dto/create.dto';
 import { UpdateProductDto } from './dto/update.dto';
 import { Category } from './category/category.entity';
+import { BatchCreteProductsDto } from './dto/batchCreate.dto';
 
 @Injectable()
 export class ProductsService {
@@ -15,6 +17,9 @@ export class ProductsService {
 
   async create(dto: CreateProductDto): Promise<Product> {
     return await this.model.create<Product>(dto);
+  }
+  async createBatch(dto: BatchCreteProductsDto): Promise<Product[]> {
+    return await this.model.bulkCreate(dto.products, { returning: true });
   }
 
   async update(id: number, dto: UpdateProductDto): Promise<Product> {

@@ -1,5 +1,11 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { IsBoolean, IsNotEmpty, MinLength, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  MinLength,
+  IsString,
+  IsNumber,
+} from 'class-validator';
 
 @InputType()
 export class CreateProductDto {
@@ -14,5 +20,6 @@ export class CreateProductDto {
   name: string;
 
   @Field()
+  @IsNumber()
   categoryId: number;
 }

@@ -50,6 +50,7 @@ import { modelEntities, modules } from './modules';
     }),
     TerminusModule.forRootAsync({
       useFactory: () => ({
+        disableDeprecationWarnings: true,
         endpoints: [
           {
             url: '/health',
