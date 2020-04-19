@@ -4,7 +4,7 @@ import { Type } from 'class-transformer';
 
 import { CreateProductDto } from './create.dto';
 
-@InputType()
+@InputType({ description: 'Batch create of products' })
 export class BatchCreteProductsDto {
   @ValidateNested()
   @ArrayMinSize(1)

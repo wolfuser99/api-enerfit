@@ -21,4 +21,6 @@ export class AuthResolver {
       );
     }
   }
+
+  // TODO: renovate token query and logout
 }

@@ -11,6 +11,7 @@ import { User } from './user/user.entity';
 import { Category } from './product/category/category.entity';
 import { ProviderProduct } from './provider/providerProduct/providerProduct.entity';
 import { ProductsModule } from './product/products.module';
+import { CustomersModule } from './customer/customers.module';
 
 export const modelEntities = [
   PurchaseOrder,
@@ -27,4 +28,4 @@ export const modelEntities = [
   User,
 ];
 
-export const modules = [ProductsModule];
+export const modules = [ProductsModule, CustomersModule];

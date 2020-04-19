@@ -1,7 +1,7 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { User } from 'src/modules/user/dto/user.dto';
 
-@ObjectType({ description: 'Login Response' })
+@ObjectType({ description: 'Login/Renew Token Response' })
 export class Auth {
   @Field({ description: 'JWT token' })
   token: string;
