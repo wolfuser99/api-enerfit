@@ -25,7 +25,7 @@ export class CustomersResolver {
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
   @Query(returns => [Customer], { nullable: true })
-  async customerss(): Promise<Customer[]> {
+  async customers(): Promise<Customer[]> {
     try {
       return await this.customersService.findAll();
     } catch (error) {

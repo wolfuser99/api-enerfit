@@ -8,6 +8,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './modules/user/users.module';
 import { AuthModule } from './modules/shared/auth/auth.module';
+import { HandlebarsAdapter, MailerModule } from '@nestjs-modules/mailer';
 
 import { modelEntities, modules } from './modules';
 
@@ -48,6 +49,7 @@ import { modelEntities, modules } from './modules';
       }),
       inject: [ConfigService],
     }),
+
     TerminusModule.forRootAsync({
       useFactory: () => ({
         disableDeprecationWarnings: true,
@@ -58,6 +60,28 @@ import { modelEntities, modules } from './modules';
           },
         ],
       }),
+    }),
+    MailerModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        transport: {
+          // pool: true,
+          debug: true,
+          secure: true,
+          requireTLS: true,
+          host: configService.get<string>('MAIL_HOST'),
+          port: configService.get<number>('MAIL_PORT'),
+          auth: {
+            user: configService.get<string>('MAIL_USERNAME'),
+            pass: configService.get<string>('MAIL_PASSWORD'),
+          },
+        },
+        defaults: {
+          from: configService.get<string>('MAIL_FROM_ADDRESS'),
+          sender: configService.get<string>('MAIL_FROM_NAME'),
+        },
+      }),
+      inject: [ConfigService],
     }),
     UsersModule,
     ...modules,
