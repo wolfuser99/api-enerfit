@@ -13,15 +13,11 @@ export class CreateUserDto {
   @IsString()
   name: string;
 
-  @Field({ nullable: true })
+  @Field({ nullable: true, defaultValue: '' })
   lastname?: string;
 
   // @Field({ nullable: true })
   // imageFile?: string;
-
-  @Field()
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(8)
-  password: string;
+  @Field({ nullable: true })
+  role?: UserRole;
 }

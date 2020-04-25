@@ -43,6 +43,10 @@ export class User extends Model<User> {
   @Column
   active: boolean;
 
+  @Default(false)
+  @Column
+  updatedDefaultPassword: boolean;
+
   @Column
   imageFile: string;
 

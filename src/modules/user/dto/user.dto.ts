@@ -17,7 +17,7 @@ export class User {
   @Field()
   name: string;
 
-  @Field({ nullable: true, defaultValue: '' })
+  @Field({ nullable: true})
   lastname?: string;
 
   @Field(type => UserRole)
@@ -25,6 +25,9 @@ export class User {
 
   @Field()
   active: boolean;
+
+  @Field()
+  updatedDefaultPassword: boolean;
 
   @Field({ nullable: true })
   imageFile: string;

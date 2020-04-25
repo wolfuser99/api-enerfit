@@ -23,6 +23,8 @@ export class UsersResolver {
     }
   }
 
+  @Roles(['ADMIN'])
+  @UseGuards(GQLAuthGuard)
   @Mutation(returns => User, { nullable: true })
   async createUser(@Args('data') data: CreateUserDto) {
     try {

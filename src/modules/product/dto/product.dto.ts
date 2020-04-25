@@ -5,6 +5,7 @@ import { Category } from '../category/dto/category.dto';
 export class Product {
   @Field()
   id: number;
+
   @Field()
   active: boolean;
 
