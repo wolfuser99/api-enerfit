@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Logger } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -28,12 +28,13 @@ import { modelEntities, modules } from './modules';
         timezone: configService.get<string>('TZ') || 'America/Santiago',
         sync: {
           force:
-            //this will drop the entire DB
+            //this will drop and recreate the entire DB
             configService.get<string>('NODE_ENV') !== 'production' && false,
         },
 
         autoLoadModels: true,
-        synchronize: true,
+        logging: msg => Logger.log(msg, 'Sequelize'),
+        synchronize: false,
         models: [...modelEntities],
       }),
       inject: [ConfigService],
@@ -65,7 +66,6 @@ import { modelEntities, modules } from './modules';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         transport: {
-          // pool: true,
           debug: true,
           secure: true,
           requireTLS: true,

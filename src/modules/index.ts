@@ -12,6 +12,7 @@ import { Category } from './product/category/category.entity';
 import { ProviderProduct } from './provider/providerProduct/providerProduct.entity';
 import { ProductsModule } from './product/products.module';
 import { CustomersModule } from './customer/customers.module';
+import { ProvidersModule } from './provider/providers.module';
 
 export const modelEntities = [
   PurchaseOrder,
@@ -28,4 +29,4 @@ export const modelEntities = [
   User,
 ];
 
-export const modules = [ProductsModule, CustomersModule];
+export const modules = [ProductsModule, CustomersModule, ProvidersModule];

@@ -1,6 +1,7 @@
-import { Field } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 import { IsNumber } from 'class-validator';
 
+@InputType()
 export class CreateProviderProductDto {
   @Field()
   @IsNumber()
