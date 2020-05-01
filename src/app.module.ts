@@ -34,7 +34,7 @@ import { modelEntities, modules } from './modules';
 
         autoLoadModels: true,
         logging: msg => Logger.log(msg, 'Sequelize'),
-        synchronize: false,
+        synchronize: true,
         models: [...modelEntities],
       }),
       inject: [ConfigService],
