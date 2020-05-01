@@ -23,11 +23,12 @@ export class UsersService {
   async create(dto: CreateUserDto): Promise<User> {
     const password = crypto.randomBytes(8).toString('hex');
     dto['password'] = password;
-    console.log(dto);
+    console.log(dto); // TODO: eliminar
+
     await this.mailerService.sendMail({
-      to: 'wolfuser99@gmail.com', // list of receivers
+      to: dto.email, // list of receivers
       subject: 'Testing Nest MailerModule ✔', // Subject line
-      html: '<b>welcome</b>' + JSON.stringify(dto), // HTML body content
+      html: '<b>Welcome your start data will be</b>' + JSON.stringify(dto), // HTML body content
     });
 
     return await this.userModel.create<User>(dto);
