@@ -3,18 +3,7 @@ services:
   api:
     build: .
     restart: always
-    environment:
-      - NODE_ENV=production
-      - TZ=America/Santiago
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=password
-      - DB_NAME=postgres
-      - DB_HOST=db
-      - DB_PORT=5432
-      - JWT_SECRET=bA2xcjpf8y5aSUFsNB2qN5yymUBSs6es3qHoFpGkec75RCeBb8cpKauGefw5qy4
-      - JWT_EXPIRATION=7d
-    # volumes:
-    # - /app/node_modules # seems to be not necessary, it uses cache
+    env_file: .env
     depends_on:
       - db
     ports:
