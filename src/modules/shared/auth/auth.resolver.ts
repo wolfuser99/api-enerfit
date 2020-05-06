@@ -1,9 +1,12 @@
-import { Resolver, Args, Query } from '@nestjs/graphql';
+import { Resolver, Args, Query, Mutation } from '@nestjs/graphql';
 import { AuthenticationError } from 'apollo-server-express';
+import { UseGuards } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
 import { LoginInput } from './dto/login-input.dto';
 import { Auth } from './dto/auth.dto';
+import { GQLAuthGuard } from './guards/GQLAuth.guard';
+import { GQLJWTToken } from './GQLJWTToken.decorator';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -22,5 +25,11 @@ export class AuthResolver {
     }
   }
 
-  // TODO: renovate token query and logout
+  // TODO: renovate token
+
+  @UseGuards(GQLAuthGuard)
+  @Mutation(returns => Boolean, { nullable: true })
+  async logout(@GQLJWTToken() token: string): Promise<boolean> {
+    return await this.authService.logout(token);
+  }
 }

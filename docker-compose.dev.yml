@@ -31,6 +31,7 @@ services:
       TZ: 'America/Santiago'
     ports:
       - '5432:5432'
+
   # install:
   #   build: .
   #   command: sh -c "yarn && yarn seeds"
@@ -44,6 +45,7 @@ services:
   #     - DB_PORT=5432
   #   volumes:
   #     - ./node_modules:/app/node_modules
+
   # adminer:
   #   image: adminer
   #   restart: always
@@ -53,3 +55,11 @@ services:
   #    - ADMINER_DEFAULT_SERVER=postgres-db
   #   depends_on:
   #     - postgres-db
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    # volumes:
+    #   - ./db/redis_data:/data

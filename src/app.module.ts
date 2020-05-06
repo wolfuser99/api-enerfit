@@ -8,6 +8,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './modules/user/users.module';
 import { AuthModule } from './modules/shared/auth/auth.module';
+import { RedisModule } from 'nestjs-redis';
 import { HandlebarsAdapter, MailerModule } from '@nestjs-modules/mailer';
 
 import { modelEntities, modules } from './modules';
@@ -39,6 +40,18 @@ import { modelEntities, modules } from './modules';
       }),
       inject: [ConfigService],
     }),
+
+    RedisModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        host: configService.get<string>('REDIS_HOST'),
+        port: configService.get<number>('REDIS_PORT'),
+        db: configService.get<number>('REDIS_DB'),
+        password: configService.get<string>('REDIS_PASSWORD'),
+        keyPrefix: configService.get<string>('REDIS_PRIFIX'),
+      }),
+      inject: [ConfigService],
+    }),
+
     GraphQLModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -62,6 +75,7 @@ import { modelEntities, modules } from './modules';
         ],
       }),
     }),
+
     MailerModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
@@ -83,6 +97,7 @@ import { modelEntities, modules } from './modules';
       }),
       inject: [ConfigService],
     }),
+
     UsersModule,
     ...modules,
     AuthModule,

@@ -1,18 +1,23 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { RedisService } from 'nestjs-redis';
+import { JwtService } from '@nestjs/jwt';
 
 import { User } from 'src/modules/user/user.entity';
 import { Auth } from './dto/auth.dto';
 import { LoginInput } from './dto/login-input.dto';
-import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
+  private client:any;
   constructor(
     @InjectModel(User)
     private readonly userModel: typeof User,
     private jwtService: JwtService,
-  ) {}
+    private readonly redisService: RedisService,
+  ) {
+     this.client = this.redisService.getClient();
+  }
 
   async login(loginInput: LoginInput) {
     Logger.log(`Loggin request by: ${loginInput.email}`, this.constructor.name);
@@ -38,9 +43,22 @@ export class AuthService {
   async isTokenAndRoleValid(token: string, permittedRoles: string[]) {
     await this.jwtService.verifyAsync(token);
     const decoded = this.jwtService.decode(token);
-    if (decoded['role'] !== null && permittedRoles.includes(decoded['role'])) {
-      return true;
-    }
-    return false;
+
+    const withNoRoleNeeded =
+      decoded['role'] !== null && permittedRoles === undefined;
+
+    const withRoleNeeded =
+      decoded['role'] !== null && 
+      permittedRoles?.includes(decoded['role']);
+
+    return withNoRoleNeeded || withRoleNeeded;
+  }
+
+  async logout(token: string): Promise<boolean> {
+    await this.client.set('asd', token);
+
+    console.log('redis: ', await this.client.get('asd'));
+
+    return true;
   }
 }
