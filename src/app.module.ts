@@ -35,7 +35,7 @@ import { modelEntities, modules } from './modules';
 
         autoLoadModels: true,
         logging: msg => Logger.log(msg, 'Sequelize'),
-        synchronize: true,
+        synchronize: false, // FIXME: to SYNC DB structural changes
         models: [...modelEntities],
       }),
       inject: [ConfigService],
