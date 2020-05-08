@@ -5,7 +5,8 @@ import * as pg from 'pg';
 
 import { AppModule } from './app.module';
 
-const fixSequelizeTimestampstzDates = () => { // Todo: fix for all cases
+const fixSequelizeTimestampstzDates = () => {
+  // Todo: fix for all cases
   try {
     pg.types.setTypeParser(pg.types.builtins.TIMESTAMPTZ, 'text', str => {
       if (str !== null && str.charAt(str.length - 3) === '-') {
@@ -22,11 +23,12 @@ async function bootstrap() {
   fixSequelizeTimestampstzDates();
 
   const app = await NestFactory.create(AppModule);
-  
+
   const configService = app.get(ConfigService);
   const port = configService.get('PORT') || 3000;
 
   app.enableCors();
+  app.enableShutdownHooks();
   app.useGlobalPipes(
     new ValidationPipe({
       // forbidUnknownValues: true,
