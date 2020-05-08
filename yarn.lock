@@ -626,18 +626,20 @@
   resolved "https://registry.yarnpkg.com/@jonkemp/package-utils/-/package-utils-1.0.5.tgz#a49dcbd649b0c83d4aaade2fcd15d074a5bf9932"
   integrity sha512-3gpXj6ZK9/ZDruwCNTUgsGTobER8oSdudQBGp/VpawxaOrKuTzdwWQ0kocB1o5ohJbdTDUfqlLrHJ5busqObiA==
 
-"@nestjs-modules/mailer@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@nestjs-modules/mailer/-/mailer-1.4.2.tgz#1c8cadb60edae8afa5d10c2b6cb49f870626a2fb"
-  integrity sha512-ySr1fc6YdIyiBjebZBpIP51vgCRw5cLldiquQxy7enEYwtOQoyBBlfqHrQHSJlIEq7RIkFL8rjPCbg4m0rTsEw==
+"@nestjs-modules/mailer@1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@nestjs-modules/mailer/-/mailer-1.4.3.tgz#9be4a493673956742739ca462bda23d528fad050"
+  integrity sha512-M1LHpDNKCwZlyDS9O5lKo9CttTalKUDQW4t6DvdqUU7uESeMb+RYh5SV5DchRoAbGYz3E0gtNnCdngXK3ohpLg==
   dependencies:
     glob "7.1.6"
     inline-css "2.6.3"
     preview-email "2.0.1"
   optionalDependencies:
-    ejs "^3.0.1"
-    handlebars "^4.0.0"
-    pug "^2.0.0"
+    "@types/ejs" "^3.0.3"
+    "@types/pug" "2.0.4"
+    ejs "^3.1.2"
+    handlebars "^4.7.6"
+    pug "^2.0.4"
 
 "@nestjs/cli@7.1.5":
   version "7.1.5"
@@ -1030,6 +1032,11 @@
   dependencies:
     "@types/express" "*"
 
+"@types/ejs@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/ejs/-/ejs-3.0.3.tgz#aa88c117fb4e666ece7348e8620d0c57b3cc2ad3"
+  integrity sha512-vkPNcai0FAHsaqLXObm1bTr87XOwfAS1a/jUx5b+Mj+lUToeEcgMIcdE0PuU0CdWq4VkNJYgLa0asYjrNb/maA==
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -1277,6 +1284,11 @@
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.19.1.tgz#33509849f8e679e4add158959fdb086440e9553f"
   integrity sha512-5qOlnZscTn4xxM5MeGXAMOsIOIKIbh9e85zJWfBRVPlRMEVawzoPhINYbRGkBZCI8LxvBe7tJCdWiarA99OZfQ==
+
+"@types/pug@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/pug/-/pug-2.0.4.tgz#8772fcd0418e3cd2cc171555d73007415051f4b2"
+  integrity sha1-h3L80EGOPNLMFxVV1zAHQVBR9LI=
 
 "@types/qs@*":
   version "6.9.2"
@@ -3617,7 +3629,7 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-ejs@^3.0.1:
+ejs@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-3.1.2.tgz#a9986e6920a60f2a3229e87d4f0f3c073209874c"
   integrity sha512-zFuywxrAWtX5Mk2KAuoJNkXXbfezpNA0v7i+YC971QORguPekpjpAgeOv99YWSdKXwj7JxI2QAWDeDkE8fWtXw==
@@ -4734,7 +4746,7 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-handlebars@4.7.6, handlebars@^4.0.0:
+handlebars@4.7.6, handlebars@^4.7.6:
   version "4.7.6"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.6.tgz#d4c05c1baf90e9945f77aa68a7a219aa4a7df74e"
   integrity sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==
@@ -7851,7 +7863,7 @@ pug-walk@^1.1.8:
   resolved "https://registry.yarnpkg.com/pug-walk/-/pug-walk-1.1.8.tgz#b408f67f27912f8c21da2f45b7230c4bd2a5ea7a"
   integrity sha512-GMu3M5nUL3fju4/egXwZO0XLi6fW/K3T3VTgFQ14GxNi8btlxgT5qZL//JwZFm/2Fa64J/PNS8AZeys3wiMkVA==
 
-pug@^2.0.0, pug@^2.0.4:
+pug@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pug/-/pug-2.0.4.tgz#ee7682ec0a60494b38d48a88f05f3b0ac931377d"
   integrity sha512-XhoaDlvi6NIzL49nu094R2NA6P37ijtgMDuWE+ofekDChvfKnzFal60bhSdiy8y2PBO6fmz3oMEIcfpBVRUdvw==
