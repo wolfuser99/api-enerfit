@@ -9,14 +9,14 @@ import { LoginInput } from './dto/login-input.dto';
 
 @Injectable()
 export class AuthService {
-  private client:any;
+  private client: any;
   constructor(
     @InjectModel(User)
     private readonly userModel: typeof User,
     private jwtService: JwtService,
     private readonly redisService: RedisService,
   ) {
-     this.client = this.redisService.getClient();
+    this.client = this.redisService.getClient();
   }
 
   async login(loginInput: LoginInput) {
@@ -42,23 +42,27 @@ export class AuthService {
 
   async isTokenAndRoleValid(token: string, permittedRoles: string[]) {
     await this.jwtService.verifyAsync(token);
+    // TODO: is token blacklisted?
     const decoded = this.jwtService.decode(token);
 
     const withNoRoleNeeded =
       decoded['role'] !== null && permittedRoles === undefined;
 
     const withRoleNeeded =
-      decoded['role'] !== null && 
-      permittedRoles?.includes(decoded['role']);
+      decoded['role'] !== null && permittedRoles?.includes(decoded['role']);
 
     return withNoRoleNeeded || withRoleNeeded;
   }
 
   async logout(token: string): Promise<boolean> {
-    await this.client.set('asd', token);
+    const decoded = this.jwtService.decode(token);
 
-    console.log('redis: ', await this.client.get('asd'));
+    if (decoded instanceof Object && decoded.exp) {
+      const secondsToExpire = decoded.exp - Math.floor(Date.now() / 1000);
+      await this.client.set(token, decoded.sub, 'EX', secondsToExpire + 10);
 
-    return true;
+      return true;
+    }
+    return false;
   }
 }
