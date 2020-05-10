@@ -634,10 +634,10 @@
   resolved "https://registry.yarnpkg.com/@jonkemp/package-utils/-/package-utils-1.0.5.tgz#a49dcbd649b0c83d4aaade2fcd15d074a5bf9932"
   integrity sha512-3gpXj6ZK9/ZDruwCNTUgsGTobER8oSdudQBGp/VpawxaOrKuTzdwWQ0kocB1o5ohJbdTDUfqlLrHJ5busqObiA==
 
-"@nestjs-modules/mailer@1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@nestjs-modules/mailer/-/mailer-1.4.3.tgz#9be4a493673956742739ca462bda23d528fad050"
-  integrity sha512-M1LHpDNKCwZlyDS9O5lKo9CttTalKUDQW4t6DvdqUU7uESeMb+RYh5SV5DchRoAbGYz3E0gtNnCdngXK3ohpLg==
+"@nestjs-modules/mailer@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@nestjs-modules/mailer/-/mailer-1.5.0.tgz#58546f3ed8ee7c0e3151086a331d0ea30d009c87"
+  integrity sha512-oyeZib/B6Qeqv023cZ8A8cA4pn1JADnkJ27MCaQl8j3fly7A5bnMwkwKHWZnRERqq0Z37nUYQ9Y6tENscPtLUw==
   dependencies:
     glob "7.1.6"
     inline-css "2.6.3"
