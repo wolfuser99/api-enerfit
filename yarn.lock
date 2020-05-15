@@ -6734,7 +6734,7 @@ minimist@1.2.5, minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
-minio@^7.0.12:
+minio@^7.0.16:
   version "7.0.16"
   resolved "https://registry.yarnpkg.com/minio/-/minio-7.0.16.tgz#1bbf334bdfe35214a9c199768f94f11b86b04063"
   integrity sha512-OgCJ3XVMzukSqoMFBiBDeyz30BxYTBM9yRLVRBCExTb+QKVxJh4DnUOS2/zw7OPeDyXXEvYSzDvg4FkCf1Cxyw==
@@ -6948,14 +6948,14 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nestjs-minio-client@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/nestjs-minio-client/-/nestjs-minio-client-0.0.5.tgz#aea67592e513133a21b308ddebdc3d48f62ef159"
-  integrity sha512-ATN+RFsS9BqtZa2vtriAQdGzpQL/xm4IxxpLMqay3NCdfcn+djz0kDDoZmCW4UqH69YU7QaOV89leZhbpggyig==
+nestjs-minio-client@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/nestjs-minio-client/-/nestjs-minio-client-0.0.6.tgz#cb599cb8d98afac011a2e1bab449d2f1c7ea5c1a"
+  integrity sha512-iD0KsACW7Vdr+U78qtW9MO1lrEr2ZjI5gU8xLF5WnTNUHJS+9aUrXcbja9oMWZvkaUqL5tuInfdntJPnprTDZw==
   dependencies:
-    minio "^7.0.12"
+    minio "^7.0.16"
     reflect-metadata "^0.1.13"
-    rxjs "^6.5.3"
+    rxjs "^6.5.5"
 
 nestjs-redis@1.2.7:
   version "1.2.7"
@@ -8443,7 +8443,7 @@ rxjs@6.5.4:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.2.2, rxjs@^6.5.3:
+rxjs@^6.2.2, rxjs@^6.5.3, rxjs@^6.5.5:
   version "6.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
   integrity sha512-WfQI+1gohdf0Dai/Bbmk5L5ItH5tYqm3ki2c5GdWhKjalzjg93N3avFjVStyZZz+A2Em+ZxKH5bNghw9UeylGQ==
