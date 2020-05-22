@@ -6913,10 +6913,10 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nestjs-minio-client@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/nestjs-minio-client/-/nestjs-minio-client-0.0.6.tgz#cb599cb8d98afac011a2e1bab449d2f1c7ea5c1a"
-  integrity sha512-iD0KsACW7Vdr+U78qtW9MO1lrEr2ZjI5gU8xLF5WnTNUHJS+9aUrXcbja9oMWZvkaUqL5tuInfdntJPnprTDZw==
+nestjs-minio-client@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/nestjs-minio-client/-/nestjs-minio-client-1.0.1.tgz#b401d8504fbe3fcdae1e1529d9f5faa68c589141"
+  integrity sha512-QrcQYoaMBIkmS6cGPq4y+7BXpbhptBoRrtiFB1YCCRItLPF8x/i+unmgmYb0pWUeLoHdKV6gd2PHN3ATX8xNZA==
   dependencies:
     minio "^7.0.16"
     reflect-metadata "^0.1.13"
