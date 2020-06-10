@@ -9,7 +9,8 @@ import { AppService } from './app.service';
 import { UsersModule } from './modules/user/users.module';
 import { AuthModule } from './modules/shared/auth/auth.module';
 import { RedisModule } from 'nestjs-redis';
-import { HandlebarsAdapter, MailerModule } from '@nestjs-modules/mailer';
+import { MailerModule } from '@nestjs-modules/mailer';
+// import { NestMinioModule } from 'nestjs-minio';
 
 import { modelEntities, modules } from './modules';
 
@@ -51,6 +52,14 @@ import { modelEntities, modules } from './modules';
       }),
       inject: [ConfigService],
     }),
+
+    // NestMinioModule.register({
+    //   endPoint: 'localhost',
+    //   port: 9000,
+    //   useSSL: false,
+    //   accessKey: 'minio',
+    //   secretKey: 'minio123',
+    // }),
 
     GraphQLModule.forRootAsync({
       imports: [ConfigModule],
