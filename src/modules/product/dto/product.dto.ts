@@ -1,5 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
-import { ProviderProductDto } from '../../provider/providerProduct/dto/providerProduct.dto';
+import { ProviderProduct } from '../../provider/providerProduct/dto/providerProduct.dto';
 
 @ObjectType()
 export class Product {
@@ -15,8 +15,8 @@ export class Product {
   @Field()
   categoryId: string;
 
-  @Field()
-  providerProducts: ProviderProductDto[];
+  @Field(type => [ProviderProduct])
+  providerProducts: ProviderProduct[];
 
   // @HasMany(() => PurchaseOrderDetail)
   // purchaseOrderDetails: PurchaseOrderDetail[];

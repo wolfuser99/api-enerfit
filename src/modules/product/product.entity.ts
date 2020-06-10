@@ -6,6 +6,7 @@ import {
   ForeignKey,
   BelongsTo,
   Default,
+  BeforeCreate,
 } from 'sequelize-typescript';
 
 import { PurchaseOrderDetail } from '../purchaseOrder/purchaseOrderDetail/purchaseOrderDetail.entity';
@@ -36,4 +37,14 @@ export class Product extends Model<Product> {
 
   @HasMany(() => PurchaseOrderDetail)
   purchaseOrderDetails: PurchaseOrderDetail[];
+
+  @BeforeCreate
+  static async before(product: Product): Promise<void> {
+    product.categoryId = product.categoryId.toLocaleUpperCase();
+    const category = { id: product.categoryId };
+    await Category.findCreateFind({
+      where: category,
+      defaults: category,
+    });
+  }
 }

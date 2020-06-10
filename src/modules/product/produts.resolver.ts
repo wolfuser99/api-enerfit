@@ -36,7 +36,7 @@ export class ProductsResolver {
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
   @Mutation(returns => Product, { nullable: true })
-  async createProduct(@Args('data') data: CreateProductDto) {
+  async createProduct(@Args('data') data: CreateProductDto): Promise<Product> {
     try {
       return await this.productService.create(data);
     } catch (error) {
@@ -47,7 +47,9 @@ export class ProductsResolver {
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
   @Mutation(returns => [Product], { nullable: true })
-  async createProducts(@Args('data') data: BatchCreteProductsDto) {
+  async createProducts(
+    @Args('data') data: BatchCreteProductsDto,
+  ): Promise<Product[]> {
     try {
       return await this.productService.createBatch(data);
     } catch (error) {

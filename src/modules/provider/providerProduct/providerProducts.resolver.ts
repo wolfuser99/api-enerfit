@@ -2,7 +2,7 @@ import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { UseGuards, Logger } from '@nestjs/common';
 import { ApolloError } from 'apollo-server-express';
 
-import { ProviderProductDto } from './dto/providerProduct.dto';
+import { ProviderProduct } from './dto/providerProduct.dto';
 import { ProviderProductsService } from './providerProducts.service';
 import { Roles } from '../../shared/auth/roles.decorator';
 import { GQLAuthGuard } from '../../shared/auth/guards/GQLAuth.guard';
@@ -10,14 +10,14 @@ import { dbErrorGQL } from '../../shared/util';
 import { CreateProviderProductDto } from './dto/create.dto';
 import { UpdateProviderProductDto } from './dto/update.dto';
 
-@Resolver(of => ProviderProductDto)
+@Resolver(of => ProviderProduct)
 export class ProviderProductsResolver {
   constructor(private productService: ProviderProductsService) {}
 
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
-  @Query(returns => [ProviderProductDto], { nullable: true })
-  async providerProducts(): Promise<ProviderProductDto[]> {
+  @Query(returns => [ProviderProduct], { nullable: true })
+  async providerProducts(): Promise<ProviderProduct[]> {
     try {
       return await this.productService.findAll();
     } catch (error) {
@@ -27,7 +27,7 @@ export class ProviderProductsResolver {
 
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
-  @Mutation(returns => ProviderProductDto, { nullable: true })
+  @Mutation(returns => ProviderProduct, { nullable: true })
   async createProviderProduct(@Args('data') data: CreateProviderProductDto) {
     try {
       return await this.productService.create(data);
@@ -49,7 +49,7 @@ export class ProviderProductsResolver {
 
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
-  @Mutation(returns => ProviderProductDto, { nullable: true })
+  @Mutation(returns => ProviderProduct, { nullable: true })
   async updateProviderProduct(
     @Args('data') data: UpdateProviderProductDto,
     @Args('id') id: number,

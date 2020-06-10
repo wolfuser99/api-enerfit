@@ -14,6 +14,8 @@ export class CreateProductDto {
   name: string;
 
   @Field()
+  @IsNotEmpty()
+  @MinLength(3)
   @IsString()
   categoryId: string;
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 import { Product } from './product.entity';
+import { ProviderProduct } from '../provider/providerProduct/providerProduct.entity';
 import { CreateProductDto } from './dto/create.dto';
 import { UpdateProductDto } from './dto/update.dto';
 import { BatchCreteProductsDto } from './dto/batchCreate.dto';
@@ -11,14 +12,20 @@ export class ProductsService {
   constructor(@InjectModel(Product) private readonly model: typeof Product) {}
 
   async findAll(): Promise<Product[]> {
-    return await this.model.findAll<Product>({ include: [Category] });
+    return await this.model.findAll<Product>({
+      include: [ProviderProduct],
+    });
   }
 
   async create(dto: CreateProductDto): Promise<Product> {
     return await this.model.create<Product>(dto);
   }
+
   async createBatch(dto: BatchCreteProductsDto): Promise<Product[]> {
-    return await this.model.bulkCreate(dto.products, { returning: true });
+    return await this.model.bulkCreate(dto.products, {
+      returning: true,
+      individualHooks: true,
+    });
   }
 
   async update(id: number, dto: UpdateProductDto): Promise<Product> {

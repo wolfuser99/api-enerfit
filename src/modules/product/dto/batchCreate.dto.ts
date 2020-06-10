@@ -6,9 +6,9 @@ import { CreateProductDto } from './create.dto';
 
 @InputType({ description: 'Batch create of products' })
 export class BatchCreteProductsDto {
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @ArrayMinSize(1)
-  @Type()
+  @Type(() => CreateProductDto)
   @Field(type => [CreateProductDto])
   products: CreateProductDto[];
 }

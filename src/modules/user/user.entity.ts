@@ -61,11 +61,11 @@ export class User extends Model<User> {
 
   @BeforeUpdate
   @BeforeCreate
-  static async before(user: User) {
+  static async before(user: User): Promise<void> {
     user.password = await bcrypt.hash(user.password, 10);
   }
 
-  async validatePassword(password: string) {
+  async validatePassword(password: string): Promise<boolean> {
     return await bcrypt.compare(password, this.password);
   }
 }
