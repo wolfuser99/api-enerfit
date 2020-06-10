@@ -5,7 +5,6 @@ import {
   IsNotEmpty,
   MinLength,
   IsString,
-  IsNumber,
 } from 'class-validator';
 
 @InputType()
@@ -24,6 +23,6 @@ export class UpdateProductDto {
 
   @IsOptional()
   @Field()
-  @IsNumber()
-  categoryId: number;
+  @IsString()
+  categoryId: string;
 }

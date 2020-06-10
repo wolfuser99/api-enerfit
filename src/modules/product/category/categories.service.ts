@@ -20,7 +20,7 @@ export class CategoriesService {
     return await this.model.create<Category>(dto);
   }
 
-  async update(id: number, dto: UpdateCategoryDto): Promise<Category> {
+  async update(id: string, dto: UpdateCategoryDto): Promise<Category> {
     const elem = await this.model.findByPk(id);
     if (elem !== null) {
       return await elem.update(dto);
@@ -28,7 +28,7 @@ export class CategoriesService {
     throw new Error('Category not found');
   }
 
-  async delete(id: number): Promise<number> {
+  async delete(id: string): Promise<string> {
     const elem = await this.model.findByPk(id);
     if (elem !== null) {
       await elem.destroy();

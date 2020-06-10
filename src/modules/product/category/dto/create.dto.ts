@@ -7,5 +7,5 @@ export class CreateCategoryDto {
   @IsNotEmpty()
   @MinLength(3)
   @IsString()
-  name: string;
+  id: string;
 }

@@ -3,11 +3,8 @@ import { Product } from '../product.entity';
 
 @Table
 export class Category extends Model<Category> {
-  @Column({ primaryKey: true, autoIncrement: true })
-  id: number;
-
-  @Column({ unique: true })
-  name: string;
+  @Column({ primaryKey: true })
+  id: string;
 
   @HasMany(() => Product)
   products: Product[];

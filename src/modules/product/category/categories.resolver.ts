@@ -40,7 +40,7 @@ export class CategoriesResolver {
   @Mutation(returns => Category, { nullable: true })
   async updateCategory(
     @Args('data') data: CreateCategoryDto,
-    @Args('id') id: number,
+    @Args('id') id: string,
   ) {
     try {
       return await this.categoryService.update(id, data);
@@ -52,7 +52,7 @@ export class CategoriesResolver {
   @Roles(['ADMIN', 'USER'])
   @UseGuards(GQLAuthGuard)
   @Mutation(returns => Int, { nullable: true })
-  async deleteCategory(@Args('id', { type: () => Int }) id: number) {
+  async deleteCategory(@Args('id') id: string) {
     try {
       return await this.categoryService.delete(id);
     } catch (error) {

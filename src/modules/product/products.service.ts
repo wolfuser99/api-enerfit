@@ -4,7 +4,6 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Product } from './product.entity';
 import { CreateProductDto } from './dto/create.dto';
 import { UpdateProductDto } from './dto/update.dto';
-import { Category } from './category/category.entity';
 import { BatchCreteProductsDto } from './dto/batchCreate.dto';
 
 @Injectable()

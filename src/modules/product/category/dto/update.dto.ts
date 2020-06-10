@@ -7,5 +7,5 @@ export class UpdateCategoryDto {
   @IsNotEmpty()
   @MinLength(3)
   @IsString()
-  name: string;
+  id: string;
 }
