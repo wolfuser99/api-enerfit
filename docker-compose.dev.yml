@@ -64,19 +64,23 @@ services:
     # volumes:
     #   - ./db/redis_data:/data
 
-    minio1:
-      image: minio/minio
-      volumes:
-        # - ./minio:/data
-        - minio:/data
-      ports:
-        - '9000:9000'
-      environment:
-        MINIO_ACCESS_KEY: minio
-        MINIO_SECRET_KEY: minio123
-      command: server /data
-      healthcheck:
-        test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
-        interval: 30s
-        timeout: 20s
-        retries: 3
+  minio1:
+    image: minio/minio
+    restart: always
+    volumes:
+      # - ./minio:/data
+      - minio1:/data
+    ports:
+      - '9000:9000'
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    command: server /data
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+volumes:
+  minio1:
