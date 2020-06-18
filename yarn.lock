@@ -35,10 +35,10 @@
     ora "4.0.3"
     rxjs "6.5.4"
 
-"@apollo/federation@^0.16.0", "@apollo/federation@^0.16.7":
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.16.7.tgz#c334b77f07e5e826ef16bb212a658d7d221ae352"
-  integrity sha512-EsMHH78OeOaKphmfjg3+Esusmub2+jsHyYiMpQ8xVWDxP2nAhW56JdsZLbj6AhLEB7NfSOUx0k9e3rJp1fljZQ==
+"@apollo/federation@^0.16.0", "@apollo/federation@^0.16.8":
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.16.8.tgz#c70efa20e2a27de3ebb801ab5c9046c23e1e13c5"
+  integrity sha512-kaGyvKGHeu3J4MGr/heEc+e1NfG57hkRHN1MmBT6XQMcMVt4+IaDlbZCVQ5rpe69Foj1IVsOQGOSw9fLfUnJAw==
   dependencies:
     apollo-graphql "^0.4.0"
     apollo-server-env "^2.4.4"
@@ -46,17 +46,17 @@
     lodash.xorby "^4.7.0"
 
 "@apollo/gateway@^0.16.0":
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/@apollo/gateway/-/gateway-0.16.7.tgz#3c08f46581027614c560bcde2ca897b9b695e800"
-  integrity sha512-/AfRoSwZBCG2N1QxMciPqEdhuB6RLJLaa75yyMALcnYno7gWIADTx85+dgoAW87FthbVzjK2ZoGve/wiqS2y/g==
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/@apollo/gateway/-/gateway-0.16.8.tgz#479028decc78907fb8d25f84b08bf4ff94fa3774"
+  integrity sha512-KVG91FZEnDdUwv4L9Dr10dHd7Hi8ZAq+ay8kZi9Jgj+kXXuDNTxIneZT9vq+tB2loUcLxCF6Z86UOWmAo8CaAg==
   dependencies:
-    "@apollo/federation" "^0.16.7"
+    "@apollo/federation" "^0.16.8"
     "@types/node-fetch" "2.5.4"
     apollo-engine-reporting-protobuf "^0.5.1"
     apollo-env "^0.6.1"
     apollo-graphql "^0.4.0"
     apollo-server-caching "^0.5.1"
-    apollo-server-core "^2.14.5"
+    apollo-server-core "^2.15.0"
     apollo-server-env "^2.4.4"
     apollo-server-errors "^2.4.1"
     apollo-server-types "^0.5.0"
@@ -1572,9 +1572,9 @@
   integrity sha512-PGAK759pxyfXE78NbKxyfRcWYA/KwW17X290cNev/qAsn9eQIxkH4shoNBafH37wewhDG/0p1cHPbK6+SzZjWQ==
 
 "@types/ioredis@^4.0.4":
-  version "4.16.5"
-  resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.16.5.tgz#861384f39974a9d1b70bbad48e967e11fdb591a5"
-  integrity sha512-jU60KcKiyFfNIz+rXbqm1tx+FqKOg8LnlSH+3o+j92IP1SQ2U9a2OZn/UkjzPoWgn0K7DtorraDsdpFgLyc9FQ==
+  version "4.16.6"
+  resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.16.6.tgz#50af0c2cd717ee5a448e7a4c2988b920b251b804"
+  integrity sha512-plPv1zOeZ8cW/cM8WYV7QtmfDjqk158qObUpDMvdXhsMlIKTNmTnuMonjs72aG934Ny77WI09RkxQ1vkaz3dJg==
   dependencies:
     "@types/node" "*"
 
@@ -2311,21 +2311,6 @@ apollo-engine-reporting-protobuf@^0.5.1:
   dependencies:
     "@apollo/protobufjs" "^1.0.3"
 
-apollo-engine-reporting@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/apollo-engine-reporting/-/apollo-engine-reporting-2.1.0.tgz#c7d5775be8a2b3d6f42c26419b31dbb134abf0d2"
-  integrity sha512-D6T126ye190s+p/2aUPdFDeHTGg/zt2rHtH/nKLJEaMPsI2oBY71b+nq44umG7cjIbZAtTWZLFOewZkJTu3qAA==
-  dependencies:
-    apollo-engine-reporting-protobuf "^0.5.1"
-    apollo-graphql "^0.4.0"
-    apollo-server-caching "^0.5.1"
-    apollo-server-env "^2.4.4"
-    apollo-server-errors "^2.4.1"
-    apollo-server-plugin-base "^0.9.0"
-    apollo-server-types "^0.5.0"
-    async-retry "^1.2.1"
-    uuid "^8.0.0"
-
 apollo-engine-reporting@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/apollo-engine-reporting/-/apollo-engine-reporting-2.2.0.tgz#805399ee3d3909e01b72f1c34a3db1ad3fe16747"
@@ -2384,34 +2369,6 @@ apollo-server-caching@^0.5.1:
   integrity sha512-L7LHZ3k9Ao5OSf2WStvQhxdsNVplRQi7kCAPfqf9Z3GBEnQ2uaL0EgO0hSmtVHfXTbk5CTRziMT1Pe87bXrFIw==
   dependencies:
     lru-cache "^5.0.0"
-
-apollo-server-core@^2.14.5:
-  version "2.14.5"
-  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-2.14.5.tgz#b8def61b49a81543616c799bc7b91fa9a6559c35"
-  integrity sha512-7zlZvVM2yIThBJBcPmiBwhxJ5vK65duUui4fcneh/A0ubOZUNgpTVbqK8dhSMUNhR6NvYIpzHFJDt1Kb5MuDdw==
-  dependencies:
-    "@apollographql/apollo-tools" "^0.4.3"
-    "@apollographql/graphql-playground-html" "1.6.26"
-    "@types/graphql-upload" "^8.0.0"
-    "@types/ws" "^7.0.0"
-    apollo-cache-control "^0.11.0"
-    apollo-datasource "^0.7.1"
-    apollo-engine-reporting "^2.1.0"
-    apollo-server-caching "^0.5.1"
-    apollo-server-env "^2.4.4"
-    apollo-server-errors "^2.4.1"
-    apollo-server-plugin-base "^0.9.0"
-    apollo-server-types "^0.5.0"
-    apollo-tracing "^0.11.0"
-    fast-json-stable-stringify "^2.0.0"
-    graphql-extensions "^0.12.3"
-    graphql-tag "^2.9.2"
-    graphql-tools "^4.0.0"
-    graphql-upload "^8.0.2"
-    loglevel "^1.6.7"
-    sha.js "^2.4.11"
-    subscriptions-transport-ws "^0.9.11"
-    ws "^6.0.0"
 
 apollo-server-core@^2.15.0:
   version "2.15.0"
@@ -7670,15 +7627,10 @@ nodemailer@6.4.0:
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.0.tgz#91482ebc09d39156d933eb9e6159642cd27bf02c"
   integrity sha512-UBqPOfQGD1cM3HnjhuQe+0u3DWx47WWK7lBjG5UtPnGOysr7oDK5lNCzcjK6zzeBSdTk4m1tGx1xNbWFZQmMNA==
 
-nodemailer@6.4.10:
+nodemailer@6.4.10, nodemailer@^6.3.1:
   version "6.4.10"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.10.tgz#f4c8dc7991c57f41fd081bef224ef01f7065143d"
   integrity sha512-j+pS9CURhPgk6r0ENr7dji+As2xZiHSvZeVnzKniLOw1eRAyM/7flP0u65tCnsapV8JFu+t0l/5VeHsCZEeh9g==
-
-nodemailer@^6.3.1:
-  version "6.4.8"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.8.tgz#aca52886e4e56f71f6b8a65f5ca6b767ca751fc7"
-  integrity sha512-UbJD0+g5e2H20bWv7Rpj3B+N3TMMJ0MLoLwaGVJ0k3Vo8upq0UltwHJ5BJfrpST1vFa91JQ8cf7cICK5DSIo1Q==
 
 nopt@^4.0.3:
   version "4.0.3"
