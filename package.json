@@ -39,7 +39,7 @@
     "class-validator": "0.12.2",
     "faker": "4.1.0",
     "graphql": "14.6.0",
-    "graphql-tools": "6.0.10",
+    "graphql-tools": "6.0.11",
     "handlebars": "4.7.6",
     "nestjs-minio-client": "1.0.4",
     "nestjs-redis": "1.2.8",
