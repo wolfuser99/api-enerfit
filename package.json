@@ -31,7 +31,7 @@
     "@nestjs/graphql": "7.6.0",
     "@nestjs/jwt": "7.1.0",
     "@nestjs/platform-express": "7.4.2",
-    "@nestjs/sequelize": "0.1.0",
+    "@nestjs/sequelize": "0.1.1",
     "@nestjs/terminus": "7.0.1",
     "apollo-server-express": "2.16.1",
     "bcryptjs": "2.4.3",
