@@ -37,7 +37,7 @@
     "bcryptjs": "2.4.3",
     "class-transformer": "0.3.1",
     "class-validator": "0.12.2",
-    "faker": "4.1.0",
+    "faker": "5.1.0",
     "graphql": "14.7.0",
     "graphql-tools": "6.0.18",
     "handlebars": "4.7.6",
