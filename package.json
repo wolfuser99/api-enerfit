@@ -41,7 +41,7 @@
     "graphql": "14.7.0",
     "graphql-tools": "6.2.2",
     "handlebars": "4.7.6",
-    "nestjs-minio-client": "1.0.4",
+    "nestjs-minio-client": "1.0.5",
     "nestjs-redis": "1.2.8",
     "nodemailer": "6.4.11",
     "passport-jwt": "4.0.0",
