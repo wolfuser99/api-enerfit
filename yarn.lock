@@ -744,9 +744,9 @@
     tslib "~2.0.1"
 
 "@graphql-tools/delegate@^7.0.0", "@graphql-tools/delegate@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-7.0.1.tgz#dd8651394b10b826f3a7f61cf1722d201a986e46"
-  integrity sha512-XawfIGq2Q7dw8X2F3slLaNmCr79sQ0mg3SALd2oysaC18uAuaRcYA/0plcIR0O2dQDamI+NfvEy1I6TNZ/czLg==
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-7.0.2.tgz#f933254727173bab4f6e0e13b2d8d4500eadf426"
+  integrity sha512-AkNkg8w966+cHEVNddYUPeuPybNvbnkL+iFA8rrW5V3F8e6LHRep5MnFwNKD4JTae9HeKEs9Jx0UQDwnuCsZng==
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     "@graphql-tools/batch-execute" "^7.0.0"
@@ -1206,9 +1206,9 @@
     chalk "^4.0.0"
 
 "@jonkemp/package-utils@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@jonkemp/package-utils/-/package-utils-1.0.6.tgz#94d55258e0ca1b70684632edbfdeb4601c958f64"
-  integrity sha512-/xb8uaOiW6C/QKCDfSJzFUThPRpwerxvthKnzxkoB29u/CSIBY1Vp9mkbl8DwTx4dx9jnhSV2bS3tWL0pPHuAg==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@jonkemp/package-utils/-/package-utils-1.0.7.tgz#6550ea56c9bd61bb4161c99e7ca38b972ad3a25d"
+  integrity sha512-OoK+K1RmhtS8SlORrlH7sW0CNdrnm0BxKNcv4pQIk6y6VORsHiX91gV3dh6XD2eS7J+iCXROcu5sGuH0tjmNEQ==
 
 "@nestjs-modules/mailer@1.5.1":
   version "1.5.1"
@@ -5192,9 +5192,9 @@ flat-cache@^2.0.1:
     write "1.0.3"
 
 flat-util@^1.1.1:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/flat-util/-/flat-util-1.1.6.tgz#f17f39dccd34880ae25f727fb8848596cc36e608"
-  integrity sha512-c5d175HeiunfSOEffuB4ey9fHwDfYyiepcdKCEJ2rMvy9IZEqrFvB89T/U4UeVyrZzVlmRsuKGd8UUuuRFomMA==
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/flat-util/-/flat-util-1.1.7.tgz#acdbdffbbcc08e9865d3e0f2c4ad5a789971a702"
+  integrity sha512-3u8cpRwgBnBJQJt8Rp27VqkDpacObH+RaL7dZVIRn0fwRb/mtmc5OU6ZeadJUpkiQURgI5Y1uPzB0tTTAiKczQ==
 
 flatted@^2.0.0:
   version "2.0.2"
