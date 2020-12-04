@@ -9109,9 +9109,9 @@ socks-proxy-agent@5, socks-proxy-agent@^5.0.0:
     socks "^2.3.3"
 
 socks@^2.3.3:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/socks/-/socks-2.5.0.tgz#3a7c286db114f67864a4bd8b4207a91d1db3d6db"
-  integrity sha512-00OqQHp5SCbwm9ecOMJj9aQtMSjwi1uVuGQoxnpKCS50VKZcOZ8z11CTKypmR8sEy7nZimy/qXY7rYJYbRlXmA==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/socks/-/socks-2.5.1.tgz#7720640b6b5ec9a07d556419203baa3f0596df5f"
+  integrity sha512-oZCsJJxapULAYJaEYBSzMcz8m3jqgGrHaGhkmU/o/PQfFWYWxkAaA0UMGImb6s6tEXfKi959X6VJjMMQ3P6TTQ==
   dependencies:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
