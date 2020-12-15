@@ -23,7 +23,7 @@
     "seeds": "sequelize-cli db:seed:all"
   },
   "dependencies": {
-    "@godaddy/terminus": "4.4.1",
+    "@godaddy/terminus": "4.5.0",
     "@nestjs-modules/mailer": "1.5.1",
     "@nestjs/common": "7.6.1",
     "@nestjs/config": "0.6.1",
