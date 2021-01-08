@@ -1,16 +1,16 @@
 {
   "extends": ["config:base"],
   "timezone": "America/Santiago",
-  "schedule": "before 5am",
+  "schedule": ["on the first day of the month"],
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": "before 5am",
+    "schedule": ["on the first day of the month"],
     "automerge": true
   },
   "packageRules": [
     {
-      "schedule": "before 5am",
-      "updateTypes": ["minor", "patch", "pin", "digest"],
+      "schedule": ["on the first day of the month"],
+      "updateTypes": ["minor", "patch"],
       "automerge": true
     }
   ]
