@@ -1,0 +1,83 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  uid: String!
+
+  """Example field (placeholder)"""
+  email: String!
+
+  """Example field (placeholder)"""
+  phoneNumber: String
+
+  """Example field (placeholder)"""
+  displayName: String
+
+  """Example field (placeholder)"""
+  photoURL: String
+
+  """Example field (placeholder)"""
+  emailVerified: Boolean
+
+  """Example field (placeholder)"""
+  disabled: Boolean
+}
+
+type Query {
+  users: [User!]!
+  user(id: String!): User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: String!): String!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  email: String!
+
+  """Example field (placeholder)"""
+  password: String!
+
+  """Example field (placeholder)"""
+  phoneNumber: String
+
+  """Example field (placeholder)"""
+  displayName: String!
+
+  """Example field (placeholder)"""
+  photoURL: String
+
+  """Example field (placeholder)"""
+  emailVerified: Boolean!
+
+  """Example field (placeholder)"""
+  disabled: Boolean!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  email: String
+
+  """Example field (placeholder)"""
+  password: String
+
+  """Example field (placeholder)"""
+  phoneNumber: String
+
+  """Example field (placeholder)"""
+  displayName: String
+
+  """Example field (placeholder)"""
+  photoURL: String
+
+  """Example field (placeholder)"""
+  emailVerified: Boolean
+
+  """Example field (placeholder)"""
+  disabled: Boolean
+  id: String!
+}
