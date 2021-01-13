@@ -1,29 +1,33 @@
-version: '3'
+# https://raw.githubusercontent.com/hasura/graphql-engine/stable/install-manifests/docker-compose/docker-compose.yaml
+version: '3.6'
 services:
-  api:
-    build: .
+  postgres:
+    image: postgres:12
     restart: always
-    env_file: .env
-    depends_on:
-      - db
     ports:
-      - '3000:3000'
+      - "5432:5432"
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
 
-  db:
-    image: postgres:11-alpine
+  graphql-engine:
+    image: hasura/graphql-engine:v1.3.3
+    ports:
+    - "8080:8080"
+    depends_on:
+    - "postgres"
     restart: always
     environment:
-      POSTGRES_PASSWORD: password
-      TZ: 'America/Santiago'
-    volumes:
-      - ./db/data:/var/lib/postgresql/data
-    # ports:
-    #   - "5432:5432"
-
-  redis:
-    image: redis:alpine
-    restart: always
-    ports:
-      - '6379:6379'
-    volumes:
-      - ./db/redis_data:/data
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      # HASURA_GRAPHQL_JWT_SECRET: '{"type":"RS256","jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com", "audience": "enerfit-api", "issuer": "https://securetoken.google.com/enerfit-api","claims_map": {"x-hasura-allowed-roles": ["user"],"x-hasura-default-role": "user","x-hasura-user-id": {"path":"$$.user_id"}}}'
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
+volumes:
+  db_data:
