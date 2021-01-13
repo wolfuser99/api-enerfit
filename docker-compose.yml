@@ -1,29 +1,53 @@
-version: '3'
+# https://raw.githubusercontent.com/hasura/graphql-engine/stable/install-manifests/docker-compose/docker-compose.yaml
+version: "3.7"
 services:
-  api:
-    build: .
+  postgres:
+    container_name: db-hasura
+    image: postgres:12-alpine
     restart: always
-    env_file: .env
-    depends_on:
-      - db
+    env_file:
+      - .env
     ports:
-      - '3000:3000'
-
-  db:
-    image: postgres:11-alpine
-    restart: always
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: password
-      TZ: 'America/Santiago'
-    volumes:
-      - ./db/data:/var/lib/postgresql/data
-    # ports:
-    #   - "5432:5432"
+      POSTGRES_PASSWORD: ${PASSWORD}
 
-  redis:
-    image: redis:alpine
+  graphql-engine:
+    image: hasura/graphql-engine:v1.3.3
+    container_name: hasura
     restart: always
+    env_file:
+      - .env
     ports:
-      - '6379:6379'
+      - "8080:8080"
+    depends_on:
+      - "postgres"
+      - "api"
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${PASSWORD}@postgres:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: ${PASSWORD}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
+
+  api:
+    build: ./nest-auth
+    restart: always
+    container_name: api-nest
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "postgres"
     volumes:
-      - ./db/redis_data:/data
+      - ./nest-auth/assets/enerfit-api-firebase-adminsdk-w6zi4-096e7553bc.json:./enerfit-api-firebase-adminsdk-w6zi4-096e7553bc.json
+    environment:
+      TZ: America/Santiago
+
+volumes:
+  db_data:
