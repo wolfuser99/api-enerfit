@@ -4,8 +4,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { FirebaseAdminCoreModule } from './modules/firebase';
 import * as admin from 'firebase-admin';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -32,7 +30,7 @@ import { UserModule } from './modules/user/user.module';
     }),
     UserModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  // controllers: [AppController],
+  // providers: [AppService],
 })
 export class AppModule {}
